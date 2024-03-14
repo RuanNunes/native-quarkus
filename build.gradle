@@ -1,6 +1,16 @@
 plugins {
     id 'java'
     id 'io.quarkus'
+    id 'jacoco'
+}
+test {
+    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+    finalizedBy jacocoTestReport
+    jacoco {
+        excludeClassLoaders = ["*QuarkusClassLoader"] 
+        destinationFile = layout.buildDirectory.file("jacoco-quarkus.exec").get().asFile 
+    }
+    jacocoTestReport.enabled = false 
 }
 
 repositories {
@@ -33,9 +43,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_21
 }
 
-test {
-    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
-}
 compileJava {
     options.encoding = 'UTF-8'
     options.compilerArgs << '-parameters'
