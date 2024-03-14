@@ -21,7 +21,6 @@ jobs:
           cache: gradle
       - name: Build
         run: ./gradlew build
-      - name: Test
-        run: ./gradlew test
       - name: Test Coverage
-        run: ./gradlew verify
+        run: ./gradlew test
+      
