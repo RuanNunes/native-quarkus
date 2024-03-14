@@ -1,6 +1,6 @@
 ## A basic GitHub Actions workflow for your Quarkus application.
 
-name: CI build
+name: CI Pipeline
 
 on:
   push:
@@ -23,3 +23,5 @@ jobs:
         run: ./gradlew build
       - name: Test
         run: ./gradlew test
+      - name: Test Coverage
+        run: ./gradlew verify
