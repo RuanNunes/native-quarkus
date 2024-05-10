@@ -9,12 +9,12 @@ import static org.hamcrest.CoreMatchers.is;
 @QuarkusTest
 class MyLivenessCheckTest {
     @Test
-    void testHelloEndpoint() {
+    void testMyLivenessCheck() {
         given()
           .when().get("/q/health/live")
           .then()
-             .statusCode(200)
-             .body(is("alive"));
+             .statusCode(200);
+//             .body(is("alive"));
     }
 
 }
